@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta Raven | Respuesta Inteligente ante Emergencias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #DC3545;     /* Urgencia/peligro */
+            --white: #FFFFFF;   /* Fondos/claridad */
+            --offwhite: #F5F5F5;/* Fondos secundarios */
+            --black: #121212;   /* Modo noche/discreción */
+            --green: #4CAF50;   /* Confirmación */
+            --blue: #1565C0;    /* Confianza/seguridad */
+            --yellow: #FBC02D;  /* Advertencias */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--offwhite);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        .emergency-header {
+            background-color: var(--red);
+            color: var(--white);
+            text-align: center;
+            padding: 0.8rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-link {
+            color: var(--white);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .header-link:hover {
+            opacity: 0.8;
+        }
+        .hero {
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), 
+                        url('https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            color: var(--white);
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        .tagline {
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 500;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--red);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s;
+            border: 3px solid var(--red);
+        }
+        .cta-button.secondary {
+            background-color: transparent;
+            border-color: var(--white);
+        }
+        .cta-button.warning {
+            background-color: var(--yellow);
+            border-color: var(--yellow);
+            color: var(--black);
+        }
+        .cta-button.landing {
+            background-color: var(--blue);
+            border-color: var(--blue);
+            animation: pulse 2s infinite;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .section {
+            padding: 4rem 1rem;
+        }
+        .section-white {
+            background-color: var(--white);
+        }
+        .section-dark {
+            background-color: var(--black);
+            color: var(--white);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 5px;
+            background-color: var(--red);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title.dark:after {
+            background-color: var(--blue);
+        }
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border-top: 5px solid var(--red);
+        }
+        .feature-card.dark {
+            background: rgba(255, 255, 255, 0.1);
+            border-top-color: var(--blue);
+        }
+        .feature-card.warning {
+            border-top-color: var(--yellow);
+        }
+        .feature-card.landing {
+            border-top-color: var(--blue);
+            cursor: pointer;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--red);
+        }
+        .feature-title.dark {
+            color: var(--blue);
+        }
+        .feature-title.warning {
+            color: var(--yellow);
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            min-width: 200px;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+        }
+        .stat-box.dark .stat-number {
+            color: var(--blue);
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--green);
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--blue);
+        }
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .app-badge {
+            margin: 1rem;
+            height: 60px;
+            transition: transform 0.3s;
+        }
+        .app-badge:hover {
+            transform: scale(1.05);
+        }
+        .emergency-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .emergency-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--red);
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior con enlace a landing -->
+    <div class="emergency-header">
+        <span>⚠️ AGITA TU TELÉFONO PARA ACTIVAR ALERTA RAVEN</span>
+        <a href="/landing" class="header-link">👉 VER VERSIÓN PROMOCIONAL</a>
+    </div>
+
+    <section class="hero">
+        <div class="logo">ALERTA RAVEN</div>
+        <div class="tagline">Tu seguridad activada con un gesto</div>
+        <p style="max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem;">Sistema de emergencia inteligente que actúa cuando tú no puedes</p>
+        <div style="margin-top: 2rem;">
+            <a href="#download" class="cta-button">DESCARGAR AHORA</a>
+            <a href="/landing" class="cta-button landing">OFERTA EXCLUSIVA</a>
+        </div>
+    </section>
+
+    <section class="section section-white">
+        <h2 class="section-title">Cómo Protege Tu Vida</h2>
+        
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">👆</div>
+                <h3 class="feature-title">Activación Instantánea</h3>
+                <p>Botón de pánico, gestos o detección automática de caídas. Funciona incluso con pantalla bloqueada.</p>
+            </div>
+            <div class="feature-card landing" onclick="window.location.href='/landing'">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title dark">Versión Premium</h3>
+                <p>Descubre todas las funcionalidades avanzadas en nuestra landing especial con descuento exclusivo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🆘</div>
+                <h3 class="feature-title">Respuesta Automática</h3>
+                <p>Envía mensajes de auxilio con tu ubicación a contactos de emergencia y servicios locales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Otras secciones se mantienen igual -->
+    <section class="section section-dark">
+        <h2 class="section-title dark">En Caso de Emergencia</h2>
+        <div class="features-container">
+            <div class="feature-card dark">
+                <div class="emergency-feature">
+                    <div class="emergency-icon">🚗</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem;">Accidente Automovilístico</h3>
+                        <p>Detección de impacto y notificación automática a servicios de emergencia con tus datos médicos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card dark">
+                <div class="emergency-feature">
+                    <div class="emergency-icon">🏥</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem;">Emergencia Médica</h3>
+                        <p>Muestra información médica crítica en pantalla bloqueada para primeros respondedores.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card dark">
+                <div class="emergency-feature">
+                    <div class="emergency-icon">🚨</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem;">Situación de Peligro</h3>
+                        <p>Activación discreta que alerta a tus contactos con evidencia multimedia del incidente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Números que Hablan</h2>
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">0.8</div>
+                <p>segundos de activación</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">24/7</div>
+                <p>monitoreo activo</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1,243+</div>
+                <p>vidas protegidas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <h2 class="section-title dark">Confían en Nosotros</h2>
+        <div class="features-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Cuando sufrí un accidente en bicicleta, Alerta Raven llamó a la ambulancia antes de que yo recuperara el conocimiento."</p>
+                <p class="testimonial-author">- Laura M., 32 años</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"El modo discreto me salvó durante un asalto. La policía llegó sin que los delincuentes sospecharan."</p>
+                <p class="testimonial-author">- Roberto G., 45 años</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="section" style="text-align: center;">
+        <h2 class="section-title">No Esperes a Necesitarlo</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem;">Descarga ahora y configura tu protección en menos de 3 minutos</p>
+        <div>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="app-badge"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="app-badge"></a>
+        </div>
+        <a href="/landing" class="cta-button landing" style="margin-top: 2rem;">VER OFERTA ESPECIAL</a>
+    </section>
+
+    <footer>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">ALERTA RAVEN</div>
+            <p style="margin-bottom: 1.5rem;">Tecnología que salva vidas cuando cada segundo cuenta</p>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                <a href="#" style="color: var(--white); margin: 0 1rem; text-decoration: none;">Privacidad</a>
+                <a href="#" style="color: var(--white); margin: 0 1rem; text-decoration: none;">Términos</a>
+                <a href="/landing" style="color: var(--white); margin: 0 1rem; text-decoration: none;">Versión Premium</a>
+                <a href="#" style="color: var(--white); margin: 0 1rem; text-decoration: none;">Contacto</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">Certificado por Protección Civil y Cruz Roja Internacional</p>
+        </div>
+    </footer>
+
+    <button class="dark-mode-toggle">🌙</button>
+
+    <script>
+        // Simular contador de vidas salvadas
+        function animateCounter(element, target, duration) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = Math.floor(target) + "+";
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+        
+        // Contador animado
+        animateCounter(document.querySelector('.stat-number:nth-child(3)'), 1243, 2000);
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Cambiar color de header al hacer scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.emergency-header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'var(--black)';
+            } else {
+                header.style.backgroundColor = 'var(--red)';
+            }
+        });
+
+        // Redirección para la tarjeta premium
+        document.querySelector('.feature-card.landing').addEventListener('click', function() {
+            window.location.href = '/landing';
+        });
+    </script>
+</body>
+</html>

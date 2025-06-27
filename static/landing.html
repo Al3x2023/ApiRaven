@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta Raven | Descarga la App que Salva Vidas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #DC3545;
+            --white: #FFFFFF;
+            --offwhite: #F5F5F5;
+            --black: #121212;
+            --green: #4CAF50;
+            --blue: #1565C0;
+            --yellow: #FBC02D;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--offwhite);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        .urgent-banner {
+            background-color: var(--red);
+            color: var(--white);
+            text-align: center;
+            padding: 0.8rem;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .hero-landing {
+            background: linear-gradient(135deg, var(--black) 0%, var(--blue) 150%);
+            color: var(--white);
+            padding: 4rem 1rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--red);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+        }
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 3rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        .benefit-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 5px solid var(--red);
+        }
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--red);
+        }
+        .demo-video {
+            background: var(--black);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        .testimonials {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-left: 5px solid var(--blue);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .download-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(to right, var(--red), var(--blue));
+        }
+        .app-badges {
+            margin-top: 2rem;
+        }
+        .app-badge {
+            height: 50px;
+            margin: 0 1rem;
+            transition: transform 0.3s;
+        }
+        .app-badge:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="urgent-banner">
+        ⚡ OFERTA LIMITADA: Primer mes gratis - Descarga ya ⚡
+    </div>
+
+    <section class="hero-landing">
+        <div class="logo">ALERTA RAVEN</div>
+        <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem;">La seguridad en tu bolsillo</h1>
+        <p style="max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem;">
+            Más de 1,200 vidas protegidas con nuestra tecnología de emergencia inteligente
+        </p>
+        <a href="#download" class="cta-button">DESCARGAR GRATIS</a>
+    </section>
+
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <div class="benefit-icon">🔄</div>
+            <h3>Activación Automática</h3>
+            <p>Detección de caídas, accidentes y sonidos de peligro sin necesidad de interactuar con el teléfono</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">📍</div>
+            <h3>Ubicación Precisa</h3>
+            <p>Envía tu localización exacta a contactos de emergencia incluso en zonas con poca señal</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">🔒</div>
+            <h3>Modo Sigiloso</h3>
+            <p>Activa alertas discretas en situaciones de riesgo sin alertar al agresor</p>
+        </div>
+    </div>
+
+    <section class="demo-video">
+  <h2 style="color: var(--white); margin-bottom: 2rem;">Cómo funciona en 60 segundos</h2>
+  <div class="video-container">
+    <video controls width="40%" style="border-radius: 5px;">
+<source src="../static/videos/demo.mp4" type="video/mp4">      Tu navegador no soporta la etiqueta de video.
+    </video>
+  </div>
+</section>
+
+
+    <section class="testimonials">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Historias reales</h2>
+        <div class="testimonial-card">
+            <p style="font-style: italic; margin-bottom: 1rem;">"Alerta Raven llamó a la ambulancia cuando me desmayé en el gimnasio. Llegaron antes de que alguien más notara mi caída."</p>
+            <p style="font-weight: 700; color: var(--red);">- Carlos M., 28 años</p>
+        </div>
+        <div class="testimonial-card">
+            <p style="font-style: italic; margin-bottom: 1rem;">"El modo discreto grabó el audio de mi asalto y envió mi ubicación a la policía sin que los ladrones se dieran cuenta."</p>
+            <p style="font-weight: 700; color: var(--red);">- Ana L., 34 años</p>
+        </div>
+    </section>
+
+    <section id="download" class="download-section">
+        <h2 style="color: var(--white); margin-bottom: 1rem;">¿Qué esperas para protegerte?</h2>
+        <p style="color: var(--white); max-width: 600px; margin: 0 auto 2rem;">
+            Descarga ahora y recibe un mes gratis de nuestro servicio premium
+        </p>
+        <div class="app-badges">
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="app-badge"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="app-badge"></a>
+        </div>
+    </section>
+
+    <footer>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="margin-bottom: 1rem;">© 2023 Alerta Raven - Todos los derechos reservados</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+                <a href="#" style="color: var(--white);">Términos</a>
+                <a href="#" style="color: var(--white);">Privacidad</a>
+                <a href="#" style="color: var(--white);">Soporte</a>
+            </div>
+            <p style="font-size: 0.8rem; opacity: 0.8;">Certificado por Protección Civil y Cruz Roja Internacional</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación para el banner urgente
+        const banner = document.querySelector('.urgent-banner');
+        setInterval(() => {
+            banner.style.backgroundColor = banner.style.backgroundColor === 'var(--yellow)' ? 'var(--red)' : 'var(--yellow)';
+            banner.style.color = banner.style.color === 'var(--black)' ? 'var(--white)' : 'var(--black)';
+        }, 1000);
+
+        // Smooth scrolling para los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
