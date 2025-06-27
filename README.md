@@ -53,7 +53,7 @@
 ## 🧪 Instalación del Backend
 
 ```bash
-git clone https://github.com/tu-usuario/alerta-raven.git
+git clone https://github.com/Al3x2023/ApiRaven.git
 cd alerta-raven
 python -m venv venv
 source venv/bin/activate  # o venv\Scripts\activate en Windows
